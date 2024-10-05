@@ -16,4 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build
-      run: dotnet build samples\Plugin.Maui.Feature.Sample.sln -c Release
+      with:
+        submodules: true 
+
+      run: dotnet build samples\Plugin.Maui.ChatGPT.Sample.sln -c Release

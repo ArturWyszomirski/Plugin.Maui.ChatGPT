@@ -1,0 +1,77 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst;net8.0</TargetFrameworks>
+   		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<UseMaui>true</UseMaui>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+
+		<!-- NuGet -->
+		<Authors>Artur Wyszomirski</Authors>
+		<Copyright>Copyright © Artur Wyszomirski</Copyright>
+		<IsPackable>True</IsPackable>
+		<PackageProjectUrl>https://github.com/ArturWyszomirski/Plugin.Maui.ChatGPT</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/ArturWyszomirski/Plugin.Maui.ChatGPT</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>dotnet-maui;maui;plugin;chat;gpt;chatgpt;openai;chat-gpt</PackageTags>
+		<IncludeSymbols>True</IncludeSymbols>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<Title>.NET MAUI ChatGPT Plugin</Title>
+		<Description>Plugin.Maui.ChatGPT provides text and voice communication with OpenAI's ChatGPT.</Description>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<DebugType>portable</DebugType>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="all" IsImplicitlyDefined="true" />
+		<PackageReference Include="System.Management" Version="7.0.0" Condition="$(TargetFramework.Contains('-windows')) == true" />
+	</ItemGroup>
+
+	<!-- Package additions -->
+	<ItemGroup>
+		<None Include="..\..\nuget.png" PackagePath="icon.png" Pack="true" />
+		<None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+	</ItemGroup>
+
+
+	<!-- If your project include submodule dependency uncomment below and fill up with proper names and paths. 
+	     Be careful with ProjectReference property as it might have been already added automatically by your IDE after adding a dependency to this project.
+
+	     Explanation: to make things working, you have to "hide" the submodule references and explicitly copy compilation output (binaries) to NuGet package.
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\dependencies\Submodule.Solution.Name\src\Submodule.Solution.Name\Submodule.Solution.Name.csproj" PrivateAssets="All" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\dependencies\Plugin.Maui.Audio\src\Submodule.Solution.Name\bin\$(Configuration)\net8.0-android\*.*"
+              	      Pack="true"
+              	      PackagePath="lib/net8.0-android34.0/" />
+		<None Include="..\..\dependencies\Plugin.Maui.Audio\src\Submodule.Solution.Name\bin\$(Configuration)\net8.0-ios\*.*"
+              	      Pack="true"
+              	      PackagePath="lib/net8.0-ios17.5/" />
+		<None Include="..\..\dependencies\Plugin.Maui.Audio\src\Submodule.Solution.Name\bin\$(Configuration)\net8.0-maccatalyst\*.*"
+              	      Pack="true"
+              	      PackagePath="lib/net8.0-maccatalyst17.5/" />
+		<None Include="..\..\dependencies\Plugin.Maui.Audio\src\Submodule.Solution.Name\bin\$(Configuration)\net8.0-windows10.0.19041.0\*.*"
+              	      Pack="true"
+              	      PackagePath="lib/net8.0-windows10.0.19041/" />
+	</ItemGroup> -->
+	
+</Project>
