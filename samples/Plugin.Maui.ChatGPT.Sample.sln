@@ -6,6 +6,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Maui.ChatGPT.Sample"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Maui.ChatGPT", "..\src\Plugin.Maui.ChatGPT\Plugin.Maui.ChatGPT.csproj", "{B60F3174-E978-4F2B-B117-F6F0327594C8}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenAiToolsLibrary", "..\..\OpenAiToolsLibrary\src\OpenAiToolsLibrary\OpenAiToolsLibrary.csproj", "{DB14F96C-E073-4726-B2A3-0FE0A69D1604}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +24,10 @@ Global
 		{B60F3174-E978-4F2B-B117-F6F0327594C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B60F3174-E978-4F2B-B117-F6F0327594C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B60F3174-E978-4F2B-B117-F6F0327594C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB14F96C-E073-4726-B2A3-0FE0A69D1604}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB14F96C-E073-4726-B2A3-0FE0A69D1604}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB14F96C-E073-4726-B2A3-0FE0A69D1604}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB14F96C-E073-4726-B2A3-0FE0A69D1604}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

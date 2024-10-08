@@ -397,3 +397,4 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 .DS_Store
+/samples/Plugin.Maui.ChatGPT.Sample/Secrets.cs

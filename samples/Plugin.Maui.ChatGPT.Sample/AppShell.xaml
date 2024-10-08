@@ -3,11 +3,14 @@
     x:Class="Plugin.Maui.ChatGPT.Sample.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pages="clr-namespace:Plugin.Maui.ChatGPT.Sample"
+    xmlns:pages="clr-namespace:Plugin.Maui.ChatGPT.Sample.Pages"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Feature Plugin"
-        ContentTemplate="{DataTemplate pages:MainPage}" />
+    <TabBar>
+        <ShellContent
+            Title="Text ChatGPT"
+            ContentTemplate="{DataTemplate pages:TextChatGptPage}"
+            Route="TextChatGPT"/>
+    </TabBar>
 
 </Shell>
