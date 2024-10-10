@@ -1,3 +1,5 @@
-﻿global using OpenAiToolsLibrary.Services;
+﻿global using CommunityToolkit.Mvvm.ComponentModel;
 
-global using Plugin.Maui.Chat.Models;
+global using Plugin.Maui.Audio;
+
+global using Plugin.Maui.ChatGPT.Services;

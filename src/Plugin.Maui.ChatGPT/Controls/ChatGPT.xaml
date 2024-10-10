@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:chat="clr-namespace:Plugin.Maui.Chat.Controls;assembly=Plugin.Maui.Chat"
-             x:Class="Plugin.Maui.ChatGPT.Controls.ChatGPT">
-    
-    <chat:Chat x:Name="chat"
-               IsStatusVisible="True"/>
+<chat:Chat xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           xmlns:chat="clr-namespace:Plugin.Maui.Chat.Controls;assembly=Plugin.Maui.Chat"
+           x:Class="Plugin.Maui.ChatGPT.Controls.ChatGPT"
+           
+           IsSpeechToTextEnabled="True"
+           IsTextReaderVisible="True">
 
-</ContentView>
+</chat:Chat>
