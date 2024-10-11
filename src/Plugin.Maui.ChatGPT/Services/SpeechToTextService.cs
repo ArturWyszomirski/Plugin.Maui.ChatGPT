@@ -30,11 +30,16 @@ public partial class SpeechToTextService : ObservableRecipient, ISpeechToTextSer
             return text;
         }
         
-        audioSource = await audioService.StartRecordingUntilSilenceDetectedAsync();
+        audioSource = await audioService.StartRecordingAsync();
 
-        IsTranscribing = true;
+        if (audioService.SoundDetected)
+        {
+            IsTranscribing = true;
 
-        return await GetTranscriptionAsync();
+            return await GetTranscriptionAsync();
+        }
+        else
+            return string.Empty;
     }
 
     public async Task<string?> StopTranscriptionAsync()
