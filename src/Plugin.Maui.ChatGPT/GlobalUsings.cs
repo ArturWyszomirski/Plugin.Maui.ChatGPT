@@ -1,4 +1,6 @@
-﻿global using CommunityToolkit.Mvvm.ComponentModel;
+﻿global using System.Diagnostics;
+
+global using CommunityToolkit.Mvvm.ComponentModel;
 
 global using Plugin.Maui.Audio;
 

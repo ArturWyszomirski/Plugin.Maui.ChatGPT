@@ -12,6 +12,8 @@ public partial class ChatGPT : Chat.Controls.Chat
 	{
 		InitializeComponent();
 
+        SendMessageCommand = new Command(async () => await SendMessageAsync(), () => chatGpt is not null);
+
         ChatMessages = [];
     }
     #endregion
@@ -31,7 +33,7 @@ public partial class ChatGPT : Chat.Controls.Chat
     #endregion
 
     #region Private methods
-    static void OnOpenAiApiKeyChanged(BindableObject bindable, object oldValue, object newValue)
+    static async void OnOpenAiApiKeyChanged(BindableObject bindable, object oldValue, object newValue)
     {
         var control = bindable as ChatGPT;
         string? apiKey = newValue as string;
@@ -39,30 +41,66 @@ public partial class ChatGPT : Chat.Controls.Chat
         if (string.IsNullOrWhiteSpace(apiKey))
             throw new ArgumentException("Open AI API key must be provided.", nameof(newValue));
 
-        control?.StartOpenAiService(apiKey);
+        try
+        {
+            control?.StartOpenAiService(apiKey);
+        }
+        catch (Exception ex)
+        {
+            await Shell.Current.DisplayAlert("OpenAI client", "Unable to connect to OpenAI service.", "Ok");
+            Debug.WriteLine(ex);
+        }
     }
 
     void StartOpenAiService(string apiKey)
     {
-        ArgumentNullException.ThrowIfNullOrWhiteSpace(apiKey);
+        ArgumentException.ThrowIfNullOrWhiteSpace(apiKey);
 
         openAiClient = new(apiKey);
         chatGpt = new(openAiClient);
 
         ArgumentNullException.ThrowIfNull(chatGpt);
 
-        SendMessageCommand = new Command(async () => await SendMessageAsync());
-
         if (IsSpeechToTextEnabled)
         {
             SpeechToTextService = new SpeechToTextService(AudioService, openAiClient);
             TextToSpeechService = new TextToSpeechService(openAiClient);
+
+            HandsFreeModeCommand = new Command(async () => await StartOrStopHandsFreeModeAsync());
         }
     }
 
-    // TODO: add canExecute on services not null
+    private async Task StartOrStopHandsFreeModeAsync()
+    {
+        IsHandsFreeModeOn = !IsHandsFreeModeOn;
+        
+        if (SpeechToTextService.IsTranscribing)
+            await SpeechToTextService.StopTranscriptionAsync();
+
+        if (TextToSpeechService.IsReading)
+            TextToSpeechService.StopReading();
+
+        MainThread.BeginInvokeOnMainThread(async () =>
+        {
+            while (IsHandsFreeModeOn)
+            {
+                TextContent += await SpeechToTextService.StartTranscriptionAsync();
+
+                if (string.IsNullOrWhiteSpace(TextContent))
+                    break;
+
+                await SendMessageAsync();
+                await TextToSpeechService.StartReadingAsync(ChatMessages.Last().TextContent);
+            }
+
+            IsHandsFreeModeOn = false;
+        });
+    }
+
     private async Task SendMessageAsync()
     {
+        ArgumentNullException.ThrowIfNull(chatGpt);
+
         ChatMessages.Add(new()
         {
             Author = "User",

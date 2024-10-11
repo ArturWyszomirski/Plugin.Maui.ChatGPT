@@ -7,10 +7,7 @@
              Title="TextChatGptPage"
              x:DataType="viewModel:TextChatGptViewModel">
 
-    <chatGPT:ChatGPT OpenAiApiKey="{Binding OpenAiApiKey}" 
-                     IsStatusVisible="True"
-                     IsAudioRecorderVisible="True"
-                     IsSpeechToTextEnabled="True"
+    <chatGPT:ChatGPT OpenAiApiKey="{Binding OpenAiApiKey}"
                      Margin="10"/>
 
 </ContentPage>

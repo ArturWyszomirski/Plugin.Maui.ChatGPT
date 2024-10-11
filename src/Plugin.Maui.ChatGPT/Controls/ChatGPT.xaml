@@ -3,8 +3,18 @@
            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
            xmlns:chat="clr-namespace:Plugin.Maui.Chat.Controls;assembly=Plugin.Maui.Chat"
            x:Class="Plugin.Maui.ChatGPT.Controls.ChatGPT"
+           x:DataType="chat:Chat"
+           x:Name="chatGPT"
            
-           IsSpeechToTextEnabled="True"
-           IsTextReaderVisible="True">
+           IsStatusVisible="True">
+
+    <chat:Chat.Triggers>
+        <DataTrigger TargetType="chat:Chat" Binding="{Binding IsHandsFreeModeOn, Source={x:Reference chatGPT}}" Value="True">
+            <Setter Property="HandsFreeModeColor" Value="Green"/>
+        </DataTrigger>
+        <DataTrigger TargetType="chat:Chat" Binding="{Binding IsHandsFreeModeOn, Source={x:Reference chatGPT}}" Value="False">
+            <Setter Property="HandsFreeModeColor" Value="{Binding HandsFreeModeColor, Source={x:Reference chatGPT}}"/>
+        </DataTrigger>
+    </chat:Chat.Triggers>
 
 </chat:Chat>

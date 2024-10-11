@@ -7,10 +7,17 @@
     Shell.FlyoutBehavior="Disabled">
 
     <TabBar>
+        
         <ShellContent
             Title="Text ChatGPT"
             ContentTemplate="{DataTemplate pages:TextChatGptPage}"
             Route="TextChatGPT"/>
+        
+        <ShellContent
+            Title="Audio ChatGPT"
+            ContentTemplate="{DataTemplate pages:AudioChatGptPage}"
+            Route="AudioChatGPT"/>
+        
     </TabBar>
 
 </Shell>
