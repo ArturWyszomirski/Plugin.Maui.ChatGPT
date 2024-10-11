@@ -6,9 +6,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Maui.ChatGPT.Sample"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Maui.ChatGPT", "..\src\Plugin.Maui.ChatGPT\Plugin.Maui.ChatGPT.csproj", "{B60F3174-E978-4F2B-B117-F6F0327594C8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenAiToolsLibrary", "..\..\OpenAiToolsLibrary\src\OpenAiToolsLibrary\OpenAiToolsLibrary.csproj", "{DB14F96C-E073-4726-B2A3-0FE0A69D1604}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenAiToolsLibrary", "..\dependencies\OpenAiToolsLibrary\src\OpenAiToolsLibrary\OpenAiToolsLibrary.csproj", "{5DEB9978-FDE0-491A-8F1D-2FD5DD2D1751}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Maui.Audio", "..\..\Plugin.Maui.Audio\src\Plugin.Maui.Audio\Plugin.Maui.Audio.csproj", "{B8A263AA-1B06-46D7-8BFA-041FABF1D7C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Maui.Audio", "..\dependencies\Plugin.Maui.Audio\src\Plugin.Maui.Audio\Plugin.Maui.Audio.csproj", "{678CC89F-87F3-4F11-AB91-802B1F81BE4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,14 +26,14 @@ Global
 		{B60F3174-E978-4F2B-B117-F6F0327594C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B60F3174-E978-4F2B-B117-F6F0327594C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B60F3174-E978-4F2B-B117-F6F0327594C8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DB14F96C-E073-4726-B2A3-0FE0A69D1604}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DB14F96C-E073-4726-B2A3-0FE0A69D1604}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DB14F96C-E073-4726-B2A3-0FE0A69D1604}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DB14F96C-E073-4726-B2A3-0FE0A69D1604}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B8A263AA-1B06-46D7-8BFA-041FABF1D7C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B8A263AA-1B06-46D7-8BFA-041FABF1D7C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B8A263AA-1B06-46D7-8BFA-041FABF1D7C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B8A263AA-1B06-46D7-8BFA-041FABF1D7C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DEB9978-FDE0-491A-8F1D-2FD5DD2D1751}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DEB9978-FDE0-491A-8F1D-2FD5DD2D1751}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DEB9978-FDE0-491A-8F1D-2FD5DD2D1751}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DEB9978-FDE0-491A-8F1D-2FD5DD2D1751}.Release|Any CPU.Build.0 = Release|Any CPU
+		{678CC89F-87F3-4F11-AB91-802B1F81BE4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{678CC89F-87F3-4F11-AB91-802B1F81BE4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{678CC89F-87F3-4F11-AB91-802B1F81BE4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{678CC89F-87F3-4F11-AB91-802B1F81BE4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,6 @@
+[submodule "dependencies/OpenAiToolsLibrary"]
+	path = dependencies/OpenAiToolsLibrary
+	url = https://github.com/ArturWyszomirski/OpenAiToolsLibrary
+[submodule "dependencies/Plugin.Maui.Audio"]
+	path = dependencies/Plugin.Maui.Audio
+	url = https://github.com/ArturWyszomirski/Plugin.Maui.Audio
