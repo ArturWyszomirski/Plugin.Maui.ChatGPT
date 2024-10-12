@@ -1,6 +1,6 @@
 namespace Plugin.Maui.ChatGPT.Controls;
 
-public partial class ChatGPT : Chat.Controls.Chat
+public partial class ChatGpt : Chat.Controls.Chat
 {
     #region Fields
     OpenAiToolsLibrary.Services.OpenAiClientService? openAiClient;
@@ -8,7 +8,7 @@ public partial class ChatGPT : Chat.Controls.Chat
     #endregion
 
     #region Constructor
-    public ChatGPT()
+    public ChatGpt()
 	{
 		InitializeComponent();
 
@@ -23,7 +23,7 @@ public partial class ChatGPT : Chat.Controls.Chat
     /// Open AI API key.
     /// </summary>
     public static readonly BindableProperty OpenAiApiKeyProperty =
-        BindableProperty.Create(nameof(OpenAiApiKey), typeof(string), typeof(ChatGPT), propertyChanged: OnOpenAiApiKeyChanged);
+        BindableProperty.Create(nameof(OpenAiApiKey), typeof(string), typeof(ChatGpt), propertyChanged: OnOpenAiApiKeyChanged);
 
     public string? OpenAiApiKey
     {
@@ -35,7 +35,7 @@ public partial class ChatGPT : Chat.Controls.Chat
     #region Private methods
     static async void OnOpenAiApiKeyChanged(BindableObject bindable, object oldValue, object newValue)
     {
-        var control = bindable as ChatGPT;
+        var control = bindable as ChatGpt;
         string? apiKey = newValue as string;
 
         if (string.IsNullOrWhiteSpace(apiKey))
@@ -63,7 +63,7 @@ public partial class ChatGPT : Chat.Controls.Chat
 
         if (IsSpeechToTextEnabled)
         {
-            SpeechToTextService = new SpeechToTextService(AudioService, openAiClient);
+            SpeechToTextService = new SpeechToTextService(this, openAiClient);
             TextToSpeechService = new TextToSpeechService(openAiClient);
 
             HandsFreeModeCommand = new Command(async () => await StartOrStopHandsFreeModeAsync());
@@ -72,10 +72,10 @@ public partial class ChatGPT : Chat.Controls.Chat
 
     private async Task StartOrStopHandsFreeModeAsync()
     {
-        IsHandsFreeModeOn = !IsHandsFreeModeOn;
-        
         if (SpeechToTextService.IsTranscribing)
-            await SpeechToTextService.StopTranscriptionAsync();
+            return;
+
+        IsHandsFreeModeOn = !IsHandsFreeModeOn;
 
         if (TextToSpeechService.IsReading)
             TextToSpeechService.StopReading();

@@ -53,7 +53,7 @@
 	</ItemGroup>
 	
 	<ItemGroup>
-	  <MauiXaml Update="Controls\ChatGPT.xaml">
+	  <MauiXaml Update="Controls\ChatGpt.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
@@ -75,6 +75,12 @@
 		<None Include="..\..\dependencies\Plugin.Maui.Audio\src\Plugin.Maui.Audio\bin\$(Configuration)\net8.0-ios\*.*" Pack="true" PackagePath="lib/net8.0-ios17.5/" />
 		<None Include="..\..\dependencies\Plugin.Maui.Audio\src\Plugin.Maui.Audio\bin\$(Configuration)\net8.0-maccatalyst\*.*" Pack="true" PackagePath="lib/net8.0-maccatalyst17.5/" />
 		<None Include="..\..\dependencies\Plugin.Maui.Audio\src\Plugin.Maui.Audio\bin\$(Configuration)\net8.0-windows10.0.19041.0\*.*" Pack="true" PackagePath="lib/net8.0-windows10.0.19041/" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Controls\ChatGpt.xaml.cs">
+	    <DependentUpon>ChatGpt.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 </Project>
