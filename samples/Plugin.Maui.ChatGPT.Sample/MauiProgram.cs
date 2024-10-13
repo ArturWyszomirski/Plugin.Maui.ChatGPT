@@ -14,7 +14,8 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-        builder.Services.AddTransient<TextChatGptPage>()
+        builder.Services.AddSingleton<IKeys, Keys>()
+						.AddTransient<TextChatGptPage>()
 						.AddTransient<AudioChatGptPage>()
 
 						.AddTransient<TextChatGptViewModel>()
