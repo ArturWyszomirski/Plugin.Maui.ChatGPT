@@ -2,5 +2,5 @@
 
 public class AudioChatGptViewModel
 {
-    public string OpenAiApiKey { get; private set; } = Secrets.GetOpenAiApiKey();
+    public string OpenAiApiKey { get; private set; } = Secrets.GetOpenAiApiKeyAsync().Result;
 }

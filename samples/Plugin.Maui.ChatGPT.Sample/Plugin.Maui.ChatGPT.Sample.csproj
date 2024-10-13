@@ -48,10 +48,6 @@
 		<!-- Embedded Resources (also remove the "Resources\EmbeddedResources" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
-	
-	<ItemGroup>
-	  <None Remove="Resources\dupa.json" />
-	</ItemGroup>
 
 	<ItemGroup>
 	    <PackageReference Include="CommunityToolkit.Maui" Version="9.1.0" />
@@ -62,12 +58,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\src\Plugin.Maui.ChatGPT\Plugin.Maui.ChatGPT.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Pages\AudioChatGptPage.xaml.cs">
-	    <DependentUpon>AudioChatGptPage.xaml</DependentUpon>
-	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>

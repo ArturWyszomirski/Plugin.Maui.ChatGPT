@@ -397,4 +397,6 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 .DS_Store
-/samples/Plugin.Maui.ChatGPT.Sample/Secrets.cs
+
+# App secrets
+/samples/Plugin.Maui.ChatGPT.Sample/Resources/Raw/OpenAiApiKey.txt

@@ -1,4 +1,9 @@
-﻿namespace Plugin.Maui.ChatGPT.Sample;
+﻿/*
+ * In order to make sample work:
+ * In Resources/Raw directory create a file named OpenAiApiKey.txt containing valid OpenAI API key and set the Build Action as MauiAsset in file properties.
+ */
+
+namespace Plugin.Maui.ChatGPT.Sample;
 
 public static class MauiProgram
 {
