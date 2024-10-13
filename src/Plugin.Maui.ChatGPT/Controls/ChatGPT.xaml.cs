@@ -14,14 +14,22 @@ public partial class ChatGpt : Chat.Controls.Chat
 
         SendMessageCommand = new Command(async () => await SendMessageAsync(), () => chatGpt is not null);
 
+        PropertyChanged += ChatGpt_PropertyChanged;
+
         ChatMessages = [];
+    }
+
+    private void ChatGpt_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(IsSpeechToTextEnabled) && IsSpeechToTextEnabled == true && openAiClient is not null)
+            StartSpeechServices();
     }
     #endregion
 
-    #region Bindable properties
-    /// <summary>
-    /// Open AI API key.
-    /// </summary>
+        #region Bindable properties
+        /// <summary>
+        /// Open AI API key.
+        /// </summary>
     public static readonly BindableProperty OpenAiApiKeyProperty =
         BindableProperty.Create(nameof(OpenAiApiKey), typeof(string), typeof(ChatGpt), propertyChanged: OnOpenAiApiKeyChanged);
 
@@ -62,15 +70,18 @@ public partial class ChatGpt : Chat.Controls.Chat
         ArgumentNullException.ThrowIfNull(chatGpt);
 
         if (IsSpeechToTextEnabled)
-        {
-            SpeechToTextService = new SpeechToTextService(this, openAiClient);
-            TextToSpeechService = new TextToSpeechService(openAiClient);
-
-            HandsFreeModeCommand = new Command(async () => await StartOrStopHandsFreeModeAsync());
-        }
+            StartSpeechServices();
     }
 
-    private async Task StartOrStopHandsFreeModeAsync()
+    void StartSpeechServices()
+    {
+        SpeechToTextService = new SpeechToTextService(this, openAiClient);
+        TextToSpeechService = new TextToSpeechService(openAiClient);
+
+        HandsFreeModeCommand = new Command(async () => await StartOrStopHandsFreeModeAsync());
+    }
+
+    async Task StartOrStopHandsFreeModeAsync()
     {
         if (SpeechToTextService.IsTranscribing)
             return;
