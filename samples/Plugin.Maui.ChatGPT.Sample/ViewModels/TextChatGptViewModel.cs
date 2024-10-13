@@ -1,6 +1,6 @@
 ﻿namespace Plugin.Maui.ChatGPT.Sample.ViewModels;
 
-public class TextChatGptViewModel(IKeys keys)
+public class TextChatGptViewModel
 {
-    public string OpenAiApiKey { get; private set; } = keys.GetOpenAiApiKey();
+    public string OpenAiApiKey { get; private set; } = Secrets.GetOpenAiApiKey();
 }

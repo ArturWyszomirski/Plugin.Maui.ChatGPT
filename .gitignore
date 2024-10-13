@@ -398,4 +398,3 @@ FodyWeavers.xsd
 *.sln.iml
 .DS_Store
 /samples/Plugin.Maui.ChatGPT.Sample/Secrets.cs
-/samples/Plugin.Maui.ChatGPT.Sample/Secrets/Keys.cs
