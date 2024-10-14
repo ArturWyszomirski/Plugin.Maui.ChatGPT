@@ -66,7 +66,7 @@ Voice message related functionalites are utilizing OpenAI's `whisper-1` for spee
 
 To enable transcription of voice messages:
 1. Enable speech-to-text: `IsSpeechToTextEnabled="True"`.
-2. Make audio recorder icon visible: `IsSpeechToTextEnabled="True"`.
+2. Make audio recorder icon visible: `IsAudioRecorderVisible="True"`.
 
 ```xaml
 <ContentPage ...
@@ -196,7 +196,6 @@ Below you'll find list of all UI related properties used in this plugin:
 - `IsSpeechToTextEnabled` - Determines whether speech-to-text is enabled.
 
 ##### Hands-free mode button
-- `HandsFreeModeCommand` - Turn on/off hands-free mode. Hands-free mode is automated recording, transcribing and sending voice messages as well as reading received messages.
 - `IsHandsFreeModeVisible` - Determines whether hands-free mode toggle button is visible.
 - `HandsFreeModeIcon` - Hands-free mode toggle button icon.
 - `HandsFreeModeColor` - Hands-free mode toggle button color.
@@ -207,7 +206,7 @@ Below you'll find list of all UI related properties used in this plugin:
 #### Send message button
 
 > [!NOTE]
-> Send message button is by default disabled is message is empty or recording, transcribing or hand-free mode is on.
+> Send message button is by default disabled if message is empty or `Plugin.Maui.ChatGPT` is recording, transcribing or hand-free mode is on.
 
 - `IsSendMessageEnabled` - Determines whether send message button is enabled.
 - `IsSendMessageVisible` - Determines whether send message button is visible.
