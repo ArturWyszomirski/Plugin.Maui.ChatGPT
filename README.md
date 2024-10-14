@@ -1,4 +1,4 @@
-![nuget.png](https://raw.githubusercontent.com/ArturWyszomirski/Plugin.Maui.ChatGPT/refs/heads/main/nuget.png)
+![nuget.png](https://raw.githubusercontent.com/ArturWyszomirski/Plugin.Maui.ChatGPT/main/nuget.png)
 # Plugin.Maui.ChatGPT
 
 `Plugin.Maui.ChatGPT` provides text and voice communication with OpenAI's ChatGPT.
@@ -147,9 +147,11 @@ Of course you can build combinations of above features. The ultimate XAML enabli
 
 Many properties of UI elements can be set as you wish.
 For more comprehensive description go to `Plugin.Maui.Chat`[documentation](https://github.com/ArturWyszomirski/Plugin.Maui.Chat).
-Below you'll find list of all UI related properties used in this plugin:
 
-#### Sent Message
+Below you'll find list of all UI related properties:
+
+#### Sent message
+
 - `SentMessageBackgroundColor` - Sent message background color.
 - `IsSentMessageAuthorVisible` - Sent message author label visibility.
 - `SentMessageAuthorTextColor` - Sent message author text color.
@@ -157,9 +159,10 @@ Below you'll find list of all UI related properties used in this plugin:
 - `SentMessageTimestampTextColor` - Sent message timestamp text color.
 - `SentMessageContentTextColor` - Sent message content text color.
 
-#### Received Message
+#### Received message
 
-##### UI Properties
+##### UI properties
+
 - `ReceivedMessageBackgroundColor` - Received message background color.
 - `IsReceivedMessageAuthorVisible` - Received message author label visibility.
 - `ReceivedMessageAuthorTextColor` - Received message author text color.
@@ -168,16 +171,19 @@ Below you'll find list of all UI related properties used in this plugin:
 - `ReceivedMessageContentTextColor` - Received message text color.
 - `ReceivedMessageAudioContentColor` - Received audio content button color.
 
-##### Text Reader
+##### Text reader
+
 - `TextReaderIcon` - Text reader button icon.
 - `TextReaderColor` - Text reader button color.
-- `IsTextReaderVisible` - Determines whether text-to-speech is enabled.
+- `IsTextReaderVisible` - Determines whether text-to-speech is visible.
 
-#### System Message
+#### System message
+
 - `SystemMessageBackgroundColor` - System message background color.
 - `SystemMessageTextColor` - System message text color.
 
 #### Status label
+
 - `Status` - Status shown just above the user message entry field e.g. "John Doe is typing..."
 - `IsStatusVisible` - Determines whether status label is visible.
 - `StatusTextColor` - Status text color.
@@ -190,17 +196,20 @@ Below you'll find list of all UI related properties used in this plugin:
 - `TextContentColor` - Text content color.
 
 #### Audio recorder
+
 - `IsAudioRecorderVisible` - Determines whether start/stop record toggle button is visible.
 - `AudioRecorderIcon` - Start/stop record toggle button icon.
 - `AudioRecorderColor` - Start/stop record toggle button color.
 - `IsSpeechToTextEnabled` - Determines whether speech-to-text is enabled.
 
 ##### Hands-free mode button
+
 - `IsHandsFreeModeVisible` - Determines whether hands-free mode toggle button is visible.
 - `HandsFreeModeIcon` - Hands-free mode toggle button icon.
 - `HandsFreeModeColor` - Hands-free mode toggle button color.
 
 ##### Background color
+
 - `MessageEntryBackgroundColor` - Message entry background color.
 
 #### Send message button
@@ -228,3 +237,9 @@ Those state properties are set by related services but can be overwritten if nec
 List of chat message is enabled in `ChatMessage` property.
 
 - `ChatMessages` - List of chat messages.
+
+## Credits
+
+All icons comes from [Flaticon](https://www.flaticon.com) Uicons series.
+
+Icon was resized and coloured with [Online PNG Tools](https://onlinepngtools.com).
