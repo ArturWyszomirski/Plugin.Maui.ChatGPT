@@ -30,7 +30,7 @@
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<Title>.NET MAUI ChatGPT Plugin</Title>
-		<Description>Plugin.Maui.ChatGPT provides text and voice communication with OpenAI's ChatGPT.</Description>
+		<Description>Provides text and voice communication with OpenAI's ChatGPT.</Description>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 		<DebugType>portable</DebugType>

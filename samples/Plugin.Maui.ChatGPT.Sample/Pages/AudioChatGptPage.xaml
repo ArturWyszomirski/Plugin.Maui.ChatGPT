@@ -8,8 +8,8 @@
              x:DataType="viewModel:AudioChatGptViewModel">
 
     <chatGpt:ChatGpt OpenAiApiKey="{Binding OpenAiApiKey}" 
-                     IsAudioRecorderVisible="True"
                      IsSpeechToTextEnabled="True"
+                     IsAudioRecorderVisible="True"
                      IsHandsFreeModeVisible="True"
                      IsTextReaderVisible="True"
                      Margin="10"/>
