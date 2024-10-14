@@ -1,4 +1,4 @@
-![nuget.png](https://raw.githubusercontent.com/ArturWyszomirski/Plugin.Maui.ChatGPT/refs/heads/main/nuget.png)
+![nuget.png](https://raw.githubusercontent.com/ArturWyszomirski/Plugin.Maui.ChatGPT/refs/heads/main/nuget.png?token=GHSAT0AAAAAACY5LLLW35GZPYC5PH2MVBQMZYNKAAQ)
 # Plugin.Maui.ChatGPT
 
 `Plugin.Maui.ChatGPT` provides text and voice communication with OpenAI's ChatGPT.
