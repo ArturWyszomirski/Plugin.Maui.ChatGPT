@@ -1,16 +1,7 @@
-<!-- 
-Everything in here is of course optional. If you want to add/remove something, absolutely do so as you see fit.
-This example README has some dummy APIs you'll need to replace and only acts as a placeholder for some inspiration that you can fill in with your own functionalities.
--->
-<!-- 
-NuGet.org allows only images from certain domains. Complete list is here: https://learn.microsoft.com/nuget/nuget-org/package-readme-on-nuget-org#allowed-domains-for-images-and-badges.
-In case of GitHub there is required a raw URI of icon file - direct link to github.com domain is not permitted.
-(Tip: to obtain raw URI, open the .png image file on GitHub page, click right mouse button on image and then select 'Open image in new tab')
--->
-![nuget.png](https://raw.githubusercontent.com/ArturWyszomirski/Plugin.Maui.ChatGPT/main/nuget.png)
+![nuget.png](https://raw.githubusercontent.com/ArturWyszomirski/Plugin.Maui.ChatGPT/refs/heads/main/nuget.png)
 # Plugin.Maui.ChatGPT
 
-`Plugin.Maui.ChatGPT` provides the ability to do this amazing thing in your .NET MAUI application.
+`Plugin.Maui.ChatGPT` provides text and voice communication with OpenAI's ChatGPT.
 
 ## Install Plugin
 
@@ -31,103 +22,210 @@ Install with the dotnet CLI: `dotnet add package Plugin.Maui.ChatGPT`, or throug
 
 ## API Usage
 
-`Plugin.Maui.ChatGPT` provides the `Feature` class that has a single property `Property` that you can get or set.
-
-You can either use it as a static class, e.g.: `Feature.Default.Property = 1` or with dependency injection: `builder.Services.AddSingleton<IFeature>(Feature.Default);`
+`Plugin.Maui.ChatGPT` is based on `Plugin.Maui.Chat` and derives most of its properties and functionalities.
+Go to `Plugin.Maui.Chat`'s [documentation](https://github.com/ArturWyszomirski/Plugin.Maui.Chat) for more information about customization options.
+`Plugin.Maui.ChatGPT` utilizes OpenAI services for speech-to-text and text-to-speech conversion.
 
 ### Permissions
 
-Before you can start using Feature, you will need to request the proper permissions on each platform.
-
-#### iOS
-
-No permissions are needed for iOS.
-
-#### Android
-
-No permissions are needed for Android.
+Before you can start using `Plugin.Maui.ChatGPT`, you will need to request the permissions for recording audio on each platform.
 
 ### Dependency Injection
 
-You will first need to register the `Feature` with the `MauiAppBuilder` following the same pattern that the .NET MAUI Essentials libraries follow.
+This NuGet depends on `MAUI Community Toolkit`, so you will first need to chain up the `MAUI Community Toolkit` in app builder.
 
 ```csharp
-builder.Services.AddSingleton(Feature.Default);
+builder.UseMauiCommunityToolkit();
 ```
 
-You can then enable your classes to depend on `IFeature` as per the following example.
+### XAML setup
 
-```csharp
-public class FeatureViewModel
-{
-    readonly IFeature feature;
+To use `Chat` you need to register `Plugin.Maui.ChatGPT.Controls` namespace by adding below line to XAML file opening tag and provide an OpenAI's API key in `OpenAiApiKey` property.
 
-    public FeatureViewModel(IFeature feature)
-    {
-        this.feature = feature;
-    }
+> [!WARNING]
+> Make sure you are adding `Plugin.Maui.ChatGPT.Controls` namespace, not the `Plugin.Maui.ChatGPT`.
 
-    public void StartFeature()
-    {
-        feature.ReadingChanged += (sender, reading) =>
-        {
-            Console.WriteLine(reading.Thing);
-        };
-
-        feature.Start();
-    }
-}
+```xaml
+<ContentPage ...
+             xmlns:chat="clr-namespace:Plugin.Maui.ChatGPT.Controls;assembly=Plugin.Maui.ChatGPT"
+             ...>
+    <chat:ChatGpt OpenAiApiKey="<your_api_key>"/>
 ```
 
-### Straight usage
+And that's it. You can now communicate with ChatGPT.
 
-Alternatively if you want to skip using the dependency injection approach you can use the `Feature.Default` property.
+### Text messaging
 
-```csharp
-public class FeatureViewModel
-{
-    public void StartFeature()
-    {
-        feature.ReadingChanged += (sender, reading) =>
-        {
-            Console.WriteLine(feature.Thing);
-        };
+Text messaging is enabled straight away. All you have to do is steps described above.
 
-        Feature.Default.Start();
-    }
-}
+### Voice messaging
+
+Voice message related functionalites are utilizing OpenAI's `whisper-1` for speech-to-text and `tts-1` for text-to-speech.
+
+#### Speech-to-text 
+
+To enable transcription of voice messages:
+1. Enable speech-to-text: `IsSpeechToTextEnabled="True"`.
+2. Make audio recorder icon visible: `IsSpeechToTextEnabled="True"`.
+
+```xaml
+<ContentPage ...
+             xmlns:chat="clr-namespace:Plugin.Maui.ChatGPT.Controls;assembly=Plugin.Maui.ChatGPT"
+             ...>
+    <chat:ChatGpt OpenAiApiKey="<your_api_key>"
+                  IsSpeechToTextEnabled="True"
+                  IsAudioRecorderVisible="True"/>
 ```
 
-### Feature
+This will result in showing up the audio recorder button. 
+Tapping it starts audio recording that will stop when user stops speaking or press audio recorder button one more time. 
+After recording is done, it will transcribed to text.
 
-Once you have created a `Feature` you can interact with it in the following ways:
+> [!WARNING]
+> Silence detection works only on Android and Windows.
 
-#### Events
+#### Text-to-speech
 
-##### `ReadingChanged`
+To enable text reading all that have to be done is setting `IsTextReaderVisible="True"`.
 
-Occurs when feature reading changes.
+```xaml
+<ContentPage ...
+             xmlns:chat="clr-namespace:Plugin.Maui.ChatGPT.Controls;assembly=Plugin.Maui.ChatGPT"
+             ...>
+    <chat:ChatGpt OpenAiApiKey="<your_api_key>"
+                  IsTextReaderVisible="True"/>
+```
 
-#### Properties
+This will result in showing up a text reader icon in right-top of received message. Tap it and text will be read. Tap again to stop.
 
-##### `IsSupported`
+#### Hands-free mode
 
-Gets a value indicating whether reading the feature is supported on this device.
+Hands-free mode provides automatization of transcription and reading. To make it work:
+1. Enable speech-to-text: `IsSpeechToTextEnabled="True"`.
+2. Make hands-free mode icon visible: `IsHandsFreeModeVisible="True"`.
 
-##### `IsMonitoring`
+```xaml
+<ContentPage ...
+             xmlns:chat="clr-namespace:Plugin.Maui.ChatGPT.Controls;assembly=Plugin.Maui.ChatGPT"
+             ...>
+    <chat:ChatGpt OpenAiApiKey="<your_api_key>"
+                  IsSpeechToTextEnabled="True"
+                  IsHandsFreeModeVisible="True"/>
+```
 
-Gets a value indicating whether the feature is actively being monitored.
+This will result in showing up the hands-free mode icon. 
+When pressed, audio recording will start, the the audio will be transcribed and send to ChatGPT. 
+When response is received it will be read out loud and, after that, the loop goes back to recording user's message.
+The process continues until silence is detected or user manually turn off hands-free mode.
 
-#### Methods
+> [!WARNING]
+> Since silence detection works only on Android and Windows, hands-free mode is also available on those platforms.
 
-##### `Start()`
+Of course you can build combinations of above features. The ultimate XAML enabling all described above functionalities would look like this:
 
-Start monitoring for changes to the feature.
+```xaml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chatGpt="clr-namespace:Plugin.Maui.ChatGPT.Controls;assembly=Plugin.Maui.ChatGPT"
+             xmlns:viewModel="clr-namespace:Plugin.Maui.ChatGPT.Sample.ViewModels"
+             x:Class="Plugin.Maui.ChatGPT.Sample.Pages.AudioChatGptPage"
+             Title="AudioChatGptPage"
+             x:DataType="viewModel:AudioChatGptViewModel">
 
-##### `Stop()`
+    <chatGpt:ChatGpt OpenAiApiKey="{Binding OpenAiApiKey}" 
+                     IsSpeechToTextEnabled="True"
+                     IsAudioRecorderVisible="True"
+                     IsHandsFreeModeVisible="True"
+                     IsTextReaderVisible="True"
+                     Margin="10"/>
 
-Stop monitoring for changes to the feature.
+</ContentPage>
+```
 
-# Acknowledgements
+### UI customization
 
-This project could not have came to be without these projects and people, thank you! <3
+Many properties of UI elements can be set as you wish.
+For more comprehensive description go to `Plugin.Maui.Chat`[documentation](https://github.com/ArturWyszomirski/Plugin.Maui.Chat).
+Below you'll find list of all UI related properties used in this plugin:
+
+#### Sent Message
+- `SentMessageBackgroundColor` - Sent message background color.
+- `IsSentMessageAuthorVisible` - Sent message author label visibility.
+- `SentMessageAuthorTextColor` - Sent message author text color.
+- `IsSentMessageTimestampVisible` - Sent message timestamp label visibility.
+- `SentMessageTimestampTextColor` - Sent message timestamp text color.
+- `SentMessageContentTextColor` - Sent message content text color.
+
+#### Received Message
+
+##### UI Properties
+- `ReceivedMessageBackgroundColor` - Received message background color.
+- `IsReceivedMessageAuthorVisible` - Received message author label visibility.
+- `ReceivedMessageAuthorTextColor` - Received message author text color.
+- `IsReceivedMessageTimestampVisible` - Received message timestamp label visibility.
+- `ReceivedMessageTimestampTextColor` - Received message timestamp text color.
+- `ReceivedMessageContentTextColor` - Received message text color.
+- `ReceivedMessageAudioContentColor` - Received audio content button color.
+
+##### Text Reader
+- `TextReaderIcon` - Text reader button icon.
+- `TextReaderColor` - Text reader button color.
+- `IsTextReaderVisible` - Determines whether text-to-speech is enabled.
+
+#### System Message
+- `SystemMessageBackgroundColor` - System message background color.
+- `SystemMessageTextColor` - System message text color.
+
+#### Status label
+- `Status` - Status shown just above the user message entry field e.g. "John Doe is typing..."
+- `IsStatusVisible` - Determines whether status label is visible.
+- `StatusTextColor` - Status text color.
+
+#### Message contents entry
+
+##### Text content
+
+- `TextContent` - Message typed by user.
+- `TextContentColor` - Text content color.
+
+#### Audio recorder
+- `IsAudioRecorderVisible` - Determines whether start/stop record toggle button is visible.
+- `AudioRecorderIcon` - Start/stop record toggle button icon.
+- `AudioRecorderColor` - Start/stop record toggle button color.
+- `IsSpeechToTextEnabled` - Determines whether speech-to-text is enabled.
+
+##### Hands-free mode button
+- `HandsFreeModeCommand` - Turn on/off hands-free mode. Hands-free mode is automated recording, transcribing and sending voice messages as well as reading received messages.
+- `IsHandsFreeModeVisible` - Determines whether hands-free mode toggle button is visible.
+- `HandsFreeModeIcon` - Hands-free mode toggle button icon.
+- `HandsFreeModeColor` - Hands-free mode toggle button color.
+
+##### Background color
+- `MessageEntryBackgroundColor` - Message entry background color.
+
+#### Send message button
+
+> [!NOTE]
+> Send message button is by default disabled is message is empty or recording, transcribing or hand-free mode is on.
+
+- `IsSendMessageEnabled` - Determines whether send message button is enabled.
+- `IsSendMessageVisible` - Determines whether send message button is visible.
+- `SendMessageIcon` - Send message button icon.
+- `SendMessageColor` - Send message button color.
+
+### State properties
+
+Those state properties are set by related services but can be overwritten if necessary.
+
+- `IsRecording` - True when audio recording is on.
+- `IsTranscribing` - True when speech transcription is on.
+- `IsPlaying` - True when audio playing is on.
+- `IsReading` - True when text is being read.
+- `IsHandsFreeModeOn` - True when text is being read.
+
+### Chat messages
+
+List of chat message is enabled in `ChatMessage` property.
+
+- `ChatMessages` - List of chat messages.
