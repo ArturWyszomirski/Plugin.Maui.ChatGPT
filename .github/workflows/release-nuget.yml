@@ -25,10 +25,12 @@ jobs:
         run: |
           $version="${{github.ref_name}}".TrimStart("v")
           "version-without-v=$version" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          
+      - name: Build Plugin.Maui.Audio
+        run: dotnet build dependencies\Plugin.Maui.Audio\src\Plugin.Maui.Audio.sln -c Release
 
-     # If your project contains submodule uncomment below and fill with proper name an path
-     # - name: Build dependencies
-     #   run: dotnet build dependencies\Submodule.Solution.Name\src\Submodule.Solution.Name.sln -c Release
+      - name: Build OpenAiToolsLibrary
+        run: dotnet build dependencies\OpenAiToolsLibrary\src\OpenAiToolsLibrary.sln -c Release
 
       - name: Pack
         run: dotnet pack src\Plugin.Maui.ChatGPT.sln -c Release -p:PackageVersion=${{ steps.get_version.outputs.version-without-v }}
