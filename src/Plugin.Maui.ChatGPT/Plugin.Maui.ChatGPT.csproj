@@ -64,8 +64,8 @@
 
 	<ItemGroup>
 		<None Include="..\..\dependencies\OpenAiToolsLibrary\src\OpenAiToolsLibrary\bin\$(Configuration)\net8.0-android\*.*" Pack="true" PackagePath="lib/net8.0-android34.0/" />
-		<None Include="..\..\dependencies\OpenAiToolsLibrary\src\OpenAiToolsLibrary\bin\$(Configuration)\net8.0-ios\*.*" Pack="true" PackagePath="lib/net8.0-ios18/" />
-		<None Include="..\..\dependencies\OpenAiToolsLibrary\src\OpenAiToolsLibrary\bin\$(Configuration)\net8.0-maccatalyst\*.*" Pack="true" PackagePath="lib/net8.0-maccatalyst18/" />
+		<None Include="..\..\dependencies\OpenAiToolsLibrary\src\OpenAiToolsLibrary\bin\$(Configuration)\net8.0-ios\*.*" Pack="true" PackagePath="lib/net8.0-ios18.0/" />
+		<None Include="..\..\dependencies\OpenAiToolsLibrary\src\OpenAiToolsLibrary\bin\$(Configuration)\net8.0-maccatalyst\*.*" Pack="true" PackagePath="lib/net8.0-maccatalyst18.0/" />
 		<None Include="..\..\dependencies\OpenAiToolsLibrary\src\OpenAiToolsLibrary\bin\$(Configuration)\net8.0-windows10.0.19041.0\*.*" Pack="true" PackagePath="lib/net8.0-windows10.0.19041/" />
 	</ItemGroup>
 	
@@ -75,8 +75,8 @@
 
 	<ItemGroup>
 		<None Include="..\..\dependencies\Plugin.Maui.Audio\src\Plugin.Maui.Audio\bin\$(Configuration)\net8.0-android\*.*" Pack="true" PackagePath="lib/net8.0-android34.0/" />
-		<None Include="..\..\dependencies\Plugin.Maui.Audio\src\Plugin.Maui.Audio\bin\$(Configuration)\net8.0-ios\*.*" Pack="true" PackagePath="lib/net8.0-ios18/" />
-		<None Include="..\..\dependencies\Plugin.Maui.Audio\src\Plugin.Maui.Audio\bin\$(Configuration)\net8.0-maccatalyst\*.*" Pack="true" PackagePath="lib/net8.0-maccatalyst18/" />
+		<None Include="..\..\dependencies\Plugin.Maui.Audio\src\Plugin.Maui.Audio\bin\$(Configuration)\net8.0-ios\*.*" Pack="true" PackagePath="lib/net8.0-ios18.0/" />
+		<None Include="..\..\dependencies\Plugin.Maui.Audio\src\Plugin.Maui.Audio\bin\$(Configuration)\net8.0-maccatalyst\*.*" Pack="true" PackagePath="lib/net8.0-maccatalyst18.0/" />
 		<None Include="..\..\dependencies\Plugin.Maui.Audio\src\Plugin.Maui.Audio\bin\$(Configuration)\net8.0-windows10.0.19041.0\*.*" Pack="true" PackagePath="lib/net8.0-windows10.0.19041/" />
 	</ItemGroup>
 
