@@ -40,6 +40,7 @@
   <Capabilities>
     <rescap:Capability Name="runFullTrust" />
     <iot:Capability Name="systemManagement"/>
+    <DeviceCapability Name="microphone"/>
   </Capabilities>
 
 </Package>
